@@ -35,23 +35,23 @@ private:
 
 namespace detail {
 template<typename T> struct Mapper {};
-template<> struct Mapper<bool>          { static constexpr char const* typeCode = "?1"; };
-template<> struct Mapper<char>          { static constexpr char const* typeCode = "b1"; };
-template<> struct Mapper<unsigned char> { static constexpr char const* typeCode = "B1"; };
-template<> struct Mapper<int16_t>       { static constexpr char const* typeCode = "i2"; };
-template<> struct Mapper<uint16_t>      { static constexpr char const* typeCode = "u2"; };
-template<> struct Mapper<int32_t>       { static constexpr char const* typeCode = "i4"; };
-template<> struct Mapper<uint32_t>      { static constexpr char const* typeCode = "u4"; };
-template<> struct Mapper<int64_t>       { static constexpr char const* typeCode = "i8"; };
-template<> struct Mapper<uint64_t>      { static constexpr char const* typeCode = "u8"; };
-template<> struct Mapper<float>         { static constexpr char const* typeCode = "f4"; };
-template<> struct Mapper<double>        { static constexpr char const* typeCode = "f8"; };
+template<> struct Mapper<bool>          { static char const* getTypeCode() { return "?1"; } };
+template<> struct Mapper<char>          { static char const* getTypeCode() { return "b1"; } };
+template<> struct Mapper<unsigned char> { static char const* getTypeCode() { return "B1"; } };
+template<> struct Mapper<int16_t>       { static char const* getTypeCode() { return "i2"; } };
+template<> struct Mapper<uint16_t>      { static char const* getTypeCode() { return "u2"; } };
+template<> struct Mapper<int32_t>       { static char const* getTypeCode() { return "i4"; } };
+template<> struct Mapper<uint32_t>      { static char const* getTypeCode() { return "u4"; } };
+template<> struct Mapper<int64_t>       { static char const* getTypeCode() { return "i8"; } };
+template<> struct Mapper<uint64_t>      { static char const* getTypeCode() { return "u8"; } };
+template<> struct Mapper<float>         { static char const* getTypeCode() { return "f4"; } };
+template<> struct Mapper<double>        { static char const* getTypeCode() { return "f8"; } };
 } // namespace detail
 
 template <typename T>
 void NumPyDataType::append(char const* fieldName)
 {
-    append(fieldName, detail::Mapper<T>::typeCode);
+    append(fieldName, detail::Mapper<T>::getTypeCode());
 }
 
 template <typename Class, typename Field>
