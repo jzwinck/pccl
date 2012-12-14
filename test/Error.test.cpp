@@ -6,6 +6,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
 #include <boost/python.hpp>
+#include <boost/version.hpp>
 #include "../Error.hpp"
 
 BOOST_AUTO_TEST_SUITE(test_Error)
@@ -30,9 +31,15 @@ BOOST_AUTO_TEST_CASE(test_raise_with_value)
         BOOST_CHECK_EQUAL("NameError", description.what());
         BOOST_CHECK_EQUAL(
                 "Throw in function void test_Error::test_raise_with_value::test_method()\n"
+#if BOOST_VERSION < 104300 // older Boost versions don't demangle C++ type names
+                "Dynamic exception type: N4pccl6python5ErrorE\n"
+                "std::exception::what: NameError\n"
+                "[PN4pccl6python16traceback_list_tE] = \n"
+#else
                 "Dynamic exception type: pccl::python::Error\n"
                 "std::exception::what: NameError\n"
                 "[pccl::python::traceback_list_t*] = \n"
+#endif
                 "Traceback (most recent call last):\n"
                 "  File \"<string>\", line 1, in <module>\n"
                 "NameError\n",
