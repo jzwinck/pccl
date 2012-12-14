@@ -4,7 +4,7 @@
 #include "Error.hpp"
 #include "throw.hpp"
 
-namespace jz {
+namespace pccl {
 namespace python {
 namespace {
 
@@ -16,11 +16,11 @@ boost::python::object makeNumPyArray(boost::python::list const& dtype, unsigned 
     // first turn a list of (name, dtype) string pairs into a NumPy data type object
     PyArray_Descr* descr;
     int rc = converter(dtype.ptr(), &descr);
-    jz_unless(rc == 1, throw Error());
+    pccl_unless(rc == 1, throw Error());
 
     npy_intp dimension = count;
     boost::python::handle<> arrayHandle(creator(1, &dimension, descr, 0/*fortran*/));
-    jz_unless(arrayHandle, throw Error());
+    pccl_unless(arrayHandle, throw Error());
     return boost::python::object(arrayHandle);
 }
 
@@ -28,7 +28,7 @@ boost::python::object makeNumPyArrayWithData(boost::python::list const& dtype, u
 {
     PyArray_Descr* descr;
     int rc = converter(dtype.ptr(), &descr); // aligned or not, depending on the function passed in
-    jz_unless(rc == 1, throw Error());
+    pccl_unless(rc == 1, throw Error());
 
     npy_intp dimension = count;
     boost::python::handle<> arrayHandle(PyArray_NewFromDescr(&PyArray_Type, descr, 1, &dimension, NULL, data, 0/*flags*/, NULL/*init*/));
@@ -74,4 +74,4 @@ boost::python::object makeNumPyArrayWithDataPacked(boost::python::list const& dt
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

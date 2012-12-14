@@ -3,14 +3,14 @@
 
 #include <Python.h>
 
-#define PY_ARRAY_UNIQUE_SYMBOL JZ_PYTHON_NUMPY_ARRAY_UNIQUE_SYMBOL
+#define PY_ARRAY_UNIQUE_SYMBOL PCCL_PYTHON_NUMPY_ARRAY_UNIQUE_SYMBOL
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 
 #include "NumPy.hpp"
 #include "Error.hpp"
 
-namespace jz {
+namespace pccl {
 namespace python {
 namespace {
 
@@ -30,4 +30,4 @@ void initializeNumPy()
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

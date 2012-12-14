@@ -5,7 +5,7 @@
 #include "throw.hpp"
 #include "Error.hpp"
 
-namespace jz {
+namespace pccl {
 namespace python {
 namespace {
 
@@ -24,7 +24,7 @@ boost::python::object const& runFile(boost::python::object const& mainNamespace,
 try
 {
     FILE *file = fopen(filename, "r");
-    jz_unless(file, jz_throw_errno("failed to open file: ", filename));
+    pccl_unless(file, pccl_throw_errno("failed to open file: ", filename));
 
     // capture the result of PyRun_* so it is cleaned up later
     boost::python::handle<>(PyRun_FileEx(file, filename, Py_file_input,
@@ -48,4 +48,4 @@ boost::python::object runFile(char const* filename)
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

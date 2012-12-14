@@ -3,7 +3,7 @@
 #include <boost/assert.hpp>
 #include <boost/thread/tss.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 namespace {
@@ -62,4 +62,4 @@ InterpreterLockAcquirer::~InterpreterLockAcquirer()
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

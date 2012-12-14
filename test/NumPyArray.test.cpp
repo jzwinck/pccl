@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_SUITE(test_NumPyArray)
 
 BOOST_AUTO_TEST_CASE(test_raise_with_value)
 {
-    using namespace jz::python;
+    using namespace pccl::python;
 
     Py_InitializeEx(false/*signals*/);
 

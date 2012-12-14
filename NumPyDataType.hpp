@@ -5,7 +5,7 @@
 
 #include <boost/python/list.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 // builds a NumPy "dtype" data description to be used when constructing NumPy arrays
@@ -61,4 +61,4 @@ void NumPyDataType::append(char const* fieldName, Field Class::* field)
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

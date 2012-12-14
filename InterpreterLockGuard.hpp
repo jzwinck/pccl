@@ -3,7 +3,7 @@
 #include <Python.h>
 #include <boost/noncopyable.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 // When a C++ function is called by Python and it will be long-running,
@@ -46,4 +46,4 @@ private:
 };
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

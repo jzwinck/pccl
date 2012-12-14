@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 Error::Error()
@@ -58,4 +58,4 @@ Error::Error()
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

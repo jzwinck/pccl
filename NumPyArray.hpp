@@ -8,7 +8,7 @@
 
 #include <boost/python/list.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 // builds a NumPy array with standard C alignment rules for the fields
@@ -28,4 +28,4 @@ boost::python::object makeNumPyArrayZerosPacked(boost::python::list const& dtype
 boost::python::object makeNumPyArrayWithDataPacked(boost::python::list const& dtype, unsigned count, void* data);
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

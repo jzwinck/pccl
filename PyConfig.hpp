@@ -41,7 +41,7 @@ are not known to work).
 #include <boost/python/stl_iterator.hpp>
 #include <Python.h>
 
-namespace jz {
+namespace pccl {
 
 struct PyConfigBase {};
 
@@ -559,7 +559,7 @@ Derived PyConfig<Derived>::load(const boost::python::object &value)
             boost::python::tuple fieldAndValue = extract<boost::python::tuple>(conf[ii]);
             std::string fieldName = extract<std::string>(fieldAndValue[0]);
             typename FieldMap::iterator it = m_fields.find(fieldName);
-            JZ_UNLESS(it != m_fields.end(), JZ_THROW("unknown key in dict: " << fieldName));
+            PCCL_UNLESS(it != m_fields.end(), PCCL_THROW("unknown key in dict: " << fieldName));
             it->second->assign(result, fieldAndValue[1]);
             requiredFields.erase(fieldName);
         }
@@ -571,24 +571,24 @@ Derived PyConfig<Derived>::load(const boost::python::object &value)
         for (::size_t ii = 0; ii < confSize; ++ii)
         {
             typename TupleMap::const_iterator itTuple = m_tupleMap.find(ii);
-            JZ_UNLESS(itTuple != m_tupleMap.end(), JZ_THROW("invalid tuple index: " << ii));
+            PCCL_UNLESS(itTuple != m_tupleMap.end(), PCCL_THROW("invalid tuple index: " << ii));
             std::string const& fieldName = itTuple->second;
             typename FieldMap::iterator it = m_fields.find(fieldName);
-            JZ_UNLESS(it != m_fields.end(), JZ_THROW("unknown key in dict: " << fieldName));
+            PCCL_UNLESS(it != m_fields.end(), PCCL_THROW("unknown key in dict: " << fieldName));
             it->second->assign(result, conf[ii]);
             requiredFields.erase(fieldName);
         }
     }
     else
     {
-        JZ_THROW("expected a dict or tuple, got: " << value.ptr()->ob_type->tp_name);
+        PCCL_THROW("expected a dict or tuple, got: " << value.ptr()->ob_type->tp_name);
     }
 
     if (!requiredFields.empty())
     {
         std::ostringstream what;
         std::copy(requiredFields.begin(), requiredFields.end(), std::ostream_iterator<std::string>(what, ", "));
-        JZ_THROW("missing required fields: " << what.str());
+        PCCL_THROW("missing required fields: " << what.str());
     }
     return result;
 }
@@ -609,11 +609,11 @@ template <class Derived>
 void PyConfig<Derived>::set(std::string const& fieldName, std::string const& value)
 {
     typename FieldMap::const_iterator field = m_fields.find(fieldName);
-    JZ_UNLESS(field != m_fields.end(), JZ_THROW("field not found: " << fieldName));
+    PCCL_UNLESS(field != m_fields.end(), PCCL_THROW("field not found: " << fieldName));
 
     FieldPtr const& fieldPtr = field->second;
     bool ok = fieldPtr->assign(static_cast<Derived&>(*this), value);
-    JZ_UNLESS(ok, JZ_THROW("cannot assign field " << fieldName << " from string"));
+    PCCL_UNLESS(ok, PCCL_THROW("cannot assign field " << fieldName << " from string"));
 }
 
 template <class Derived>
@@ -642,4 +642,4 @@ std::ostream& operator <<(std::ostream& out, PyConfig<Derived> const& config)
     return config.print(out);
 }
 
-} // namespace jz
+} // namespace pccl

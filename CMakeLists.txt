@@ -25,7 +25,7 @@ include_directories(${PYTHON_INCLUDE_PATH})
 #message(${Boost_LIBRARIES})
 #message(${NUMPY_INCLUDE_DIRS})
 
-add_library(jzpy
+add_library(pccl
     Error.cpp
     InterpreterLockGuard.cpp
     NumPy.cpp
@@ -35,6 +35,6 @@ add_library(jzpy
     terminate.cpp
     )
 
-target_link_libraries(jzpy ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+target_link_libraries(pccl ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
 add_subdirectory(test)

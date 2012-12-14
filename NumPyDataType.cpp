@@ -2,7 +2,7 @@
 
 #include <boost/python/tuple.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 void NumPyDataType::append(char const* fieldName, char const* typeCode)
@@ -11,4 +11,4 @@ void NumPyDataType::append(char const* fieldName, char const* typeCode)
 }
 
 } // namespace python
-} // namespace jz
+} // namespace pccl

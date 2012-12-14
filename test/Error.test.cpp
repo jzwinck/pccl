@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE(test_Error)
 
 BOOST_AUTO_TEST_CASE(test_raise_with_value)
 {
-    using namespace jz::python;
+    using namespace pccl::python;
     using namespace boost::python;
     Py_InitializeEx(false);
     try
@@ -30,9 +30,9 @@ BOOST_AUTO_TEST_CASE(test_raise_with_value)
         BOOST_CHECK_EQUAL("NameError", description.what());
         BOOST_CHECK_EQUAL(
                 "Throw in function void test_Error::test_raise_with_value::test_method()\n"
-                "Dynamic exception type: jz::python::Error\n"
+                "Dynamic exception type: pccl::python::Error\n"
                 "std::exception::what: NameError\n"
-                "[jz::python::traceback_list_t*] = \n"
+                "[pccl::python::traceback_list_t*] = \n"
                 "Traceback (most recent call last):\n"
                 "  File \"<string>\", line 1, in <module>\n"
                 "NameError\n",

@@ -20,7 +20,7 @@
 #include <vector>
 #include <boost/exception/all.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 class Error : public std::exception, public boost::exception
@@ -55,7 +55,7 @@ public:
 };
 
 } // namespace python
-} // namespace jz
+} // namespace pccl
 
 /*
  *  Create an error_info object for the traceback so that it can be printed
@@ -66,7 +66,7 @@ namespace boost
 {
     inline
     std::string
-    to_string(jz::python::Error::traceback_list const& traceback)
+    to_string(pccl::python::Error::traceback_list const& traceback)
     {
         std::string result;
         if (traceback.value().empty())

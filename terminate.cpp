@@ -4,7 +4,7 @@
 
 #include <boost/exception/diagnostic_information.hpp>
 
-namespace jz {
+namespace pccl {
 namespace error {
 namespace detail {
 namespace {
@@ -43,4 +43,4 @@ TerminateGuard::TerminateGuard()
 
 } // namespace detail
 } // namespace error
-} // namespace jz
+} // namespace pccl

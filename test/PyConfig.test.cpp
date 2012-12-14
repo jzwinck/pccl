@@ -10,7 +10,7 @@
 
 #include "../PyConfig.hpp"
 
-struct SubConfig : jz::PyConfig<SubConfig>
+struct SubConfig : pccl::PyConfig<SubConfig>
 {
     std::string whatever;
 
@@ -20,7 +20,7 @@ struct SubConfig : jz::PyConfig<SubConfig>
     }
 };
 
-struct MyTuple : jz::PyConfig<MyTuple>
+struct MyTuple : pccl::PyConfig<MyTuple>
 {
     int a, b, c, d;
 
@@ -35,7 +35,7 @@ struct MyTuple : jz::PyConfig<MyTuple>
     }
 };
 
-struct MyConfig : jz::PyConfig<MyConfig>
+struct MyConfig : pccl::PyConfig<MyConfig>
 {
     std::string mystr;
     int myint;
@@ -75,7 +75,7 @@ struct MyConfig : jz::PyConfig<MyConfig>
     }
 };
 
-struct MyConfigMandatory : jz::PyConfig<MyConfigMandatory>
+struct MyConfigMandatory : pccl::PyConfig<MyConfigMandatory>
 {
     int myint;
 
@@ -86,7 +86,7 @@ struct MyConfigMandatory : jz::PyConfig<MyConfigMandatory>
 };
 
 
-struct MyConfigOptional : jz::PyConfig<MyConfigOptional>
+struct MyConfigOptional : pccl::PyConfig<MyConfigOptional>
 {
     boost::optional<int> myOptionalInt;
     boost::optional<int> myOptionalInt2;
@@ -175,7 +175,7 @@ void testConf(std::string const& filename)
     BOOST_CHECK_EQUAL(conf4.myOptionalPyConfig->myint, 43);
 }
 
-struct MyArgConfig : jz::PyConfig<MyArgConfig>
+struct MyArgConfig : pccl::PyConfig<MyArgConfig>
 {
     std::vector<std::string> args;
 
@@ -193,7 +193,7 @@ void testStreamOutput(std::string const& filename)
 
 boost::unit_test_framework::test_suite *init_unit_test_suite(int argc, char *argv[])
 {
-    JZ_UNLESS(argc > 1, JZ_THROW("config file(s) must be specified"));
+    PCCL_UNLESS(argc > 1, PCCL_THROW("config file(s) must be specified"));
 
     boost::unit_test::framework::master_test_suite().add(
         BOOST_PARAM_TEST_CASE(testConf, argv + 1, argv + argc));

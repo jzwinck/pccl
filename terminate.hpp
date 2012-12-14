@@ -3,7 +3,7 @@
 // including this file causes full diagnostic information to be printed for boost::exceptions
 // this is meant to be included by throw.hpp and probably should not be used elsewhere
 
-namespace jz {
+namespace pccl {
 namespace error {
 namespace detail {
 
@@ -24,4 +24,4 @@ inline void ensureTerminateGuard()
 
 } // namespace detail
 } // namespace error
-} // namespace jz
+} // namespace pccl

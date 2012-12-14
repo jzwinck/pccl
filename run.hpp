@@ -2,7 +2,7 @@
 
 #include <boost/python/object.hpp>
 
-namespace jz {
+namespace pccl {
 namespace python {
 
 // given the name of a file containing Python text, run it and return the resulting top-level namespace
@@ -17,4 +17,4 @@ boost::python::object const& runFile(boost::python::object const& mainNamespace,
 
 } // namespace detail
 } // namespace python
-} // namespace jz
+} // namespace pccl
