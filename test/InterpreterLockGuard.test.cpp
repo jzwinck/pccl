@@ -18,6 +18,9 @@ BOOST_AUTO_TEST_CASE(test1)
     {
         Py_InitializeEx(false);
         pccl::python::InterpreterLockGuard guard2;
+        pccl::python::InterpreterLockGuard guard3; // should do nothing
+        pccl::python::InterpreterLockAcquirer releaser1; // re-acquires the lock
+        pccl::python::InterpreterLockAcquirer releaser2; // should do nothing
     }
 }
 
