@@ -9,4 +9,4 @@ Imagine Python syntax and expressiveness where INI files might have been used be
 
 For example usage, see the "test" directory, especially PyConfig.test.cpp and .py.
 
-Depends on Boost Python and the Python C API.
+Depends on Boost Python and the Python C API (packages "boost-devel" and "python-devel" if you use yum).
